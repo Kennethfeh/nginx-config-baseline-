@@ -11,6 +11,12 @@ An opinionated Ansible project I use to prove configuration management chops: it
 | `ansible/roles/webserver/templates/index.html.j2` | Human-friendly landing page that prints deploy timestamps using Ansible facts. |
 | `ansible.cfg` | Sets default inventory path and roles directory for local development.
 
+## Requirements
+
+- Control node with Ansible 2.15+ and Python 3.11+
+- Target hosts running Ubuntu/Debian (uses `apt` and `systemd` modules)
+- SSH access with privilege escalation (passwordless sudo or become password configured in inventory)
+
 ## Running the playbook
 
 ```bash
@@ -21,6 +27,14 @@ ansible-playbook -i ansible/inventory ansible/playbooks/site.yml
 ```
 
 Override hosts or ssh keys in the copied inventory. The playbook targets the `webservers` group and uses privilege escalation to manage nginx.
+
+Verify the landing page once the run completes:
+
+```bash
+TARGET=your-server.example.com
+curl http://$TARGET
+# => HTML output that includes the hostname and deploy timestamp from Ansible facts
+```
 
 ## CI guardrails
 
