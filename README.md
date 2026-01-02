@@ -1,6 +1,6 @@
 # Nginx Config Baseline
 
-An opinionated Ansible project I use to prove configuration management chops: it provisions nginx, deploys templated content, and hardens basics while staying idempotent.
+An opinionated Ansible project for demonstrating configuration management: it provisions nginx, deploys templated content, and hardens basics while staying idempotent.
 
 ## Layout
 
@@ -38,7 +38,7 @@ curl http://$TARGET
 
 ## CI guardrails
 
-The `nginx_config_baseline` job in `.github/workflows/portfolio.yml` installs Ansible + ansible-lint, runs `ansible-lint ansible`, and executes `ansible-playbook --syntax-check`. That mirrors the controls I add before giving infra repos to junior engineers.
+The `nginx_config_baseline` job in `.github/workflows/portfolio.yml` installs Ansible + ansible-lint, runs `ansible-lint ansible`, and executes `ansible-playbook --syntax-check`. That mirrors the controls typically added before sharing infra repos with new team members.
 
 ## Extending the baseline
 
